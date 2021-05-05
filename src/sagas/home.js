@@ -1,8 +1,10 @@
 import {takeLatest, takeEvery, call, put} from 'redux-saga/effects';
 import {MALL_TYPES} from '../constants/actionsTypes';
+import {getHomeContent} from '../api/home';
 
-function* getHomeContent() {
+function* handleHomeContent() {
   try {
+    console.error('???');
     yield put({type: MALL_TYPES.HOME_CONTENT_LOADING});
     const homeContent = yield call(getHomeContent);
     yield put({type: MALL_TYPES.HOME_CONTENT_SUCCESS});
@@ -10,5 +12,5 @@ function* getHomeContent() {
 }
 
 export default function* watcherSaga() {
-  yield takeLatest(MALL_TYPES.HOME_CONTENT_REQUEST, getHomeContent);
+  yield takeLatest(MALL_TYPES.HOME_CONTENT_REQUEST, handleHomeContent);
 }

@@ -2,12 +2,12 @@ import React, {useEffect} from 'react';
 import {Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getHomeContent} from '../../api/home';
+import {connect} from 'react-redux';
+import {requestHomeContent} from '../../actions/home';
 
-const HomeScreen = () => {
+const HomeScreen = props => {
   useEffect(() => {
-    getHomeContent().then(response => {
-      console.error(response, '?');
-    });
+    props.dispatch(requestHomeContent());
   }, []);
   return (
     <Icon.Button name="facebook" backgroundColor="#3b5998">
@@ -16,4 +16,9 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+const mapStateToProps = ({home}) => {
+  return {
+    home,
+  };
+};
+export default connect(mapStateToProps)(HomeScreen);
