@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux';
+import {homeReducer} from '../reducers/home';
 
 export default combineReducers({
-  home: (state, action) => {
-    return {};
-  },
+  home: homeReducer,
 });

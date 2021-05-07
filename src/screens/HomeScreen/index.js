@@ -4,15 +4,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {getHomeContent} from '../../api/home';
 import {connect} from 'react-redux';
 import {requestHomeContent} from '../../actions/home';
+import ImageSlider from '../../components/ImageSlider';
 
 const HomeScreen = props => {
   useEffect(() => {
     props.dispatch(requestHomeContent());
+    console.error(props.home);
   }, []);
   return (
-    <Icon.Button name="facebook" backgroundColor="#3b5998">
-      Login with Facebook
-    </Icon.Button>
+    <>
+      <ImageSlider height={200} media={props.home.brandList} />
+    </>
   );
 };
 

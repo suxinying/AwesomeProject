@@ -6,7 +6,6 @@ const request = axios.create({
 });
 
 request.interceptors.request.use(config => {
-  console.error(config);
   return config;
 });
 

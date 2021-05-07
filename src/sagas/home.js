@@ -4,10 +4,12 @@ import {getHomeContent} from '../api/home';
 
 function* handleHomeContent() {
   try {
-    console.error('???');
     yield put({type: MALL_TYPES.HOME_CONTENT_LOADING});
     const homeContent = yield call(getHomeContent);
-    yield put({type: MALL_TYPES.HOME_CONTENT_SUCCESS});
+    yield put({
+      type: MALL_TYPES.HOME_CONTENT_SUCCESS,
+      payload: homeContent.data,
+    });
   } catch (e) {}
 }
 

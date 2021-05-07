@@ -13,10 +13,8 @@ const propTypes = {
   height: PropTypes.number.isRequired,
   media: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
-      source: PropTypes.shape({
-        uri: PropTypes.string.isRequired,
-      }).isRequired,
+      id: PropTypes.number,
+      bigPic: PropTypes.string,
     }),
   ),
   resizeMode: PropTypes.oneOf([
@@ -45,6 +43,7 @@ const ImageSlider = ({
   onPress,
   ...props
 }) => {
+  console.error(media);
   const ViewGroup = onPress ? TouchableWithoutFeedback : React.Fragment;
   return (
     <View style={[{height}, containerStyle]}>
@@ -55,7 +54,7 @@ const ImageSlider = ({
               key={String(item.id)}
               style={{top: 0, height}}
               resizeMode={resizeMode}
-              source={item.source}
+              source={{uri: item.bigPic}}
             />
           </ViewGroup>
         ))}
